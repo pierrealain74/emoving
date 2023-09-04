@@ -1,0 +1,83 @@
+/* 
+
+
+
+Personnalisation d'un produit
+
+
+
+Selection de ces taxonomies : 
+--Couleur
+--Guidon
+--Puissance
+
+Objectif : 
+--afficher la photo correspondante à une couleur
+
+02/02/2023
+pierrealainfaure.com
+
+
+*/
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    // **Récupérer le select couleur        
+    const selectColor = document.getElementById('field_select_6999072591');
+    //Prendre tous les data-thumb
+
+    const divEltDataThumb = document.querySelector('.woocommerce-product-gallery__wrapper');
+
+
+    const elementsDataThumb = document.querySelectorAll('.woocommerce-product-gallery__image[data-thumb]');
+
+    const elementsDataThumbArray = Array.from(elementsDataThumb)
+
+    
+
+    selectColor.addEventListener("change", function () {
+
+        var selectedCategory = selectColor.value;
+
+        elementsDataThumbArray.forEach((element, index) => {
+
+
+            //console.log('le tableau du queryselector attribut color-alt :', element.getAttribute('data-thumb-alt'));
+            
+            const datathumbColor = element.getAttribute('data-thumb-alt');
+
+            /* console.log('datathumbColor : ', datathumbColor);//OK
+            console.log('la categorie du select : ', selectedCategory); // OK */
+
+            
+
+            
+            
+           if (datathumbColor === selectedCategory) {
+
+                
+               
+               console.log('color trouvée : ', datathumbColor);
+               console.log('index objet  : ', index);
+
+               
+
+               divEltDataThumb.innerHTML = '';
+               divEltDataThumb.innerHTML = 'test';
+
+               //divEltDataThumb.appendChild(emptyElement);
+
+
+
+
+           }
+            
+                        
+
+
+        });
+    });
+
+});
